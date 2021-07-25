@@ -47,13 +47,13 @@ class MassacreFrame(tk.Frame):
 
     def faction_label(self, faction: str, row_no):
         label = tk.Label(
-            self._content, text=faction, font=("Helvetica", "10", "italic")
+            self._content, text=faction, font=Fonts.TargetsItalic
         )
         label.grid(row=row_no, column=0, sticky=tk.W, columnspan=5)
         return label
 
-    def data_label(self, text, row, column, sticky=tk.W):
-        label = tk.Label(self._content, text=text)
+    def data_label(self, text, row, column, sticky=tk.W, font=Fonts.Targets):
+        label = tk.Label(self._content, text=text, font=font)
         label.grid(row=row, column=column, sticky=sticky)
         return label
 
@@ -69,12 +69,15 @@ class MassacreFrame(tk.Frame):
         labels = []
         items = [location, reward, killcount, expiry]
         column = 0
+        font = Fonts.Targets
+        if location == "Location":
+          font = Fonts.TargetsBold
 
         for item in items:
             # for each one, add a spacer, then the data
-            labels.append(self.data_label(text=" ", row=row, column=column))
+            labels.append(self.data_label(text=" ", row=row, column=column, font=font))
             column += 1
-            labels.append(self.data_label(text=f"{item}", row=row, column=column))
+            labels.append(self.data_label(text=f"{item}", row=row, column=column, font=font))
             column += 1
 
         row_data = {
@@ -165,11 +168,7 @@ class MassacreFrame(tk.Frame):
                     self._content,
                     justify=tk.RIGHT,
                     text=kill_text,
-                    font=(
-                        "Helvetica",
-                        "10",
-                        "italic",
-                    ),
+                    font=Fonts.TargetsItalic,
                 ).grid(row=title_rowno, column=5, sticky=tk.W, columnspan=3)
 
         theme.update(self._content)

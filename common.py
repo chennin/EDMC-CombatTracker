@@ -38,3 +38,7 @@ class Fonts:
     Title = ("Helvetica", 12, "underline")
 
     Targets = ("Helvetica", 10)
+
+    TargetsBold = ("Helvetica", 10, "bold")
+
+    TargetsItalic = ("Helvetica", "10", "italic")

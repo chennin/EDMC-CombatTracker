@@ -135,8 +135,8 @@ class Controller:
         """Registers the parent frame and initialises the tracker panels"""
         row = AutoInc()
         self.master_frame = tk.Frame(parent)
-        self.target_frame = TargetFrame(self.master_frame)
-        self.target_frame.grid(row=row.get(), sticky=tk.W)
+#        self.target_frame = TargetFrame(self.master_frame)
+#        self.target_frame.grid(row=row.get(), sticky=tk.W)
         tk.Frame(self.master_frame, highlightthickness=1).grid(
             row=row.get(), column=0, columnspan=2, sticky=tk.EW
         )  # separator
@@ -168,7 +168,8 @@ class Controller:
                 if update_gui:
                     self.update_massacre_display()
         elif event_name == "ShipTargeted" and update_gui:
-            self.target_frame.update_data(new_event)
+            pass
+#            self.target_frame.update_data(new_event)
 
     def update_massacre_display(self):
         """Updates the massacre display frame"""
